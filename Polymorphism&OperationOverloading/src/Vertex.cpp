@@ -5,7 +5,8 @@ Programmer:Jean Carlos Ng
 
 Vertex::Vertex()
 {
-    //ctor
+    head = 0;
+    tail = 0;
 }
 
 Vertex::~Vertex()
