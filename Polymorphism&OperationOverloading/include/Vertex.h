@@ -1,6 +1,6 @@
 #ifndef VERTEX_H
 #define VERTEX_H
-
+#include"Edge.h"
 
 class Vertex
 {
@@ -9,9 +9,9 @@ class Vertex
         virtual ~Vertex();
         Vertex(const Vertex& other);
 
-    protected:
-
     private:
+        friend Edge *head, *tail;
+
 };
 
 #endif // VERTEX_H

@@ -12,6 +12,8 @@ class Edge
     protected:
 
     private:
+        int weight
+        node *next;
 };
 
 #endif // EDGE_H
