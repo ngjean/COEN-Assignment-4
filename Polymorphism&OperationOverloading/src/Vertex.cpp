@@ -7,41 +7,54 @@ Vertex::Vertex()
 {
     value = 0;
     id = 0;
-    next = 0; //next -> null
+//    next = 0; //next -> null
 }
 
 Vertex::Vertex(int iid,int ivalue)
 {
    id = iid;
    value = ivalue;
+//   inext = 0;
 }
 
 Vertex::~Vertex()
 {
-    //dtor
+    //deleted vectex
 }
 
 Vertex::Vertex(const Vertex& other)
 {
-    //copy ctor
+
 }
 
-Vertex::getId()
+int Vertex::getIconnect()
+{
+    return iconnect;
+}
+
+int Vertex::getId()
 {
     return id;
 }
 
-Vertex::getValue()
+int Vertex::getValue()
 {
     return value;
 }
 
-Vertex::setNext(Vertex* Vnext)
+void Vertex::setIconnet(int inum)
 {
-    next = Vnext;
+    iconnect = inum;
 }
 
-Vertex::setValue(int ivalue)
+void Vertex::setConnection(Edge& newConnection)
 {
-    value = ivalue
+    Edge next = newConnection;
+    Connection.push_back(next);
+    iconnect++;
+}
+
+void Vertex::setValue(int ivalue)
+{
+    value = ivalue;
 }

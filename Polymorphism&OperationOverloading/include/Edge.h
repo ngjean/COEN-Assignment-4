@@ -1,19 +1,17 @@
 #ifndef EDGE_H
 #define EDGE_H
-
+#include<iostream>
+using namespace std;
 
 class Edge
 {
     public:
         Edge();
-        virtual ~Edge();
         Edge(const Edge& other);
+        virtual ~Edge();
 
-    protected:
-
-    private:
-        int weight
-        node *next;
+        int weight;
+        Edge* next;
 };
 
 #endif // EDGE_H

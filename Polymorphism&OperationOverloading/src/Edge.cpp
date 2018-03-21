@@ -15,5 +15,7 @@ Edge::~Edge()
 
 Edge::Edge(const Edge& other)
 {
-    //copy ctor
+    weight = other.weight;
+    next = new Edge();
+    *next = *other.next;
 }

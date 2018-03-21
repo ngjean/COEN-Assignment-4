@@ -1,6 +1,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
-
+#include<iostream>
+#include "Vertex.h"
+#include "Edge.h"
+using namespace std;
 
 class Graph
 {

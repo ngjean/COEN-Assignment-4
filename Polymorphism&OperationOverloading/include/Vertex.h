@@ -1,22 +1,25 @@
 #ifndef VERTEX_H
 #define VERTEX_H
-
-#include"Edge.h"
-
+#include<iostream>
+#include <vector>
+#include "Edge.h"
+using namespace std;
 class Vertex
 {
     public:
         Vertex();
-        vertex(int,int);
+        Vertex(int,int);
         virtual ~Vertex();
         Vertex(const Vertex& other);
-        int getvalue();
+        int getValue();
         int getId();
+        int getIconnect();
+        void setIconnet(int);
         void setValue(int);
-        void setNext(Vertex*);
+        void setConnection(Edge& );
 
     private:
-      Vertex *next;
-      int id, value;
+        vector<Edge> Connection;
+        int id, value,iconnect;
 };
 #endif // VERTEX_H
