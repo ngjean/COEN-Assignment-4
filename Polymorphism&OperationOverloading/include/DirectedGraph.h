@@ -1,8 +1,8 @@
 #ifndef DIRECTEDGRAPH_H
 #define DIRECTEDGRAPH_H
-
 #include <Graph.h>
-
+#include<iostream>
+using namespace std;
 
 class DirectedGraph : public Graph
 {
