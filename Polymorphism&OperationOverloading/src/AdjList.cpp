@@ -1,10 +1,6 @@
 /*
- * AdjList.cpp
- *
- *  Created on: Mar 22, 2018
- *      Author: usuario
- */
-
+Programmer:Jean Carlos Ng
+*/
 #include "AdjList.h"
 
 AdjList::AdjList() {
@@ -16,4 +12,3 @@ AdjList::AdjList() {
 AdjList::~AdjList() {
 	// TODO Auto-generated destructor stub
 }
-

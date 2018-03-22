@@ -1,22 +1,14 @@
-/*
- * AdjList.h
- *
- *  Created on: Mar 22, 2018
- *      Author: usuario
- */
-
-#ifndef ADJLIST_H_
-#define ADJLIST_H_
-
+#ifndef ADJLIST_H
+#define ADJLIST_H
 #include "Vertex.h"
 
-class AdjList {
-public:
-	AdjList();
+class AdjList
+{
+    public:
+        AdjList();
+        virtual ~AdjList();
+        Vertex* heads;
 
-	Vertex* heads;
-
-	~AdjList();
 };
 
-#endif /* ADJLIST_H_ */
+#endif // ADJLIST_H

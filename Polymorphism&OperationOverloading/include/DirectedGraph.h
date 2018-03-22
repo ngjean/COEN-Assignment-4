@@ -71,8 +71,6 @@ class DirectedGraph : public Graph
 
         vector <AdjList> VectorVertices; //This would actually substitute the Vector "node" that is below
 
-
-
     private:
         vector<Edge> line;
         vector<Vertex> node;

@@ -16,7 +16,7 @@ class Vertex
        // void setIconnet(int);
         void setValue(int);
 
-        void setNext(Vertex);		// To set the Vertex to which this one is going to point to.
+        void setNext(const Vertex&);		// To set the Vertex to which this one is going to point to.
         							// (I don't know how to properly pass the object Vertex in this funct.)
 
         //void setConnection(Edge& );

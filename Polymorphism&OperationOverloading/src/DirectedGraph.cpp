@@ -111,12 +111,20 @@ bool DirectedGraph::searchEdge(const Edge& e)
 
 void DirectedGraph::display(Vertex& v)const
 {
-
+    int iid;
+    iid = v.getId();
+    for(int ivalue = 0 ; ivalue < iline; ivalue++)
+    {
+        if(line[ivalue].start == iid)
+        {
+            cout<<"|"<<line[ivalue].start<<"| --> |"<<line[ivalue].dest<<"|"<<endl;
+        }
+    }
 }
 
 void DirectedGraph::display(Edge& e)const
 {
-
+    cout<<"|"<<e.start<<"|-->|"<<e.dest<<"|"<<endl;
 }
 
 void DirectedGraph::display()const

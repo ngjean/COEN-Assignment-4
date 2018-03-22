@@ -1,16 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    
-    
-    return 0;
-}
-
-
-
 // The Little Program to Test Vectors
 
 #include <iostream>

@@ -23,7 +23,7 @@ Vertex::Vertex(int iid,int ivalue)
 
 Vertex::~Vertex()
 {
-    //deleted vectex
+    delete next;
 }
 
 Vertex::Vertex(const Vertex& other)
@@ -63,7 +63,8 @@ void Vertex::setValue(int ivalue)
     value = ivalue;
 }
 
-void Vertex::setNext(Vertex v){
-
+void Vertex::setNext(const Vertex v)
+{
 	next = v;
 }
+
