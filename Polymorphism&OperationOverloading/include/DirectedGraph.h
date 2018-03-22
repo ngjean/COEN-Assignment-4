@@ -4,6 +4,7 @@
 #include"Graph.h"
 #include"Vertex.h"
 #include"Edge.h"
+#include "AdjList.h"
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -55,11 +56,27 @@ class DirectedGraph : public Graph
         //remove all the vertices and edges;
         virtual bool clean();
 
+        /*struct node{
+
+        	int value;
+        	struct node* next;
+        };*/
+
+        // THIS IS THE ADJACENCY LIST
+
+        /*struct AdjList{
+
+        	Vertex* heads;
+        };*/
+
+        vector <AdjList> VectorVertices; //This would actually substitute the Vector "node" that is below
+
+
 
     private:
         vector<Edge> line;
         vector<Vertex> node;
-        int iline, inode;
+        int iline, inode,V;
 };
 
 #endif // DIRECTEDGRAPH_H
