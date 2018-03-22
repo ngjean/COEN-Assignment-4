@@ -45,6 +45,7 @@ bool DirectedGraph::removeVertex(Vertex& v)
             return true;
         }
     }
+    return false;
 }
 
 bool DirectedGraph::addEdge(Edge& newLine)
@@ -76,6 +77,7 @@ bool DirectedGraph::removeEdge(Edge & e)
             }
         }
     }
+    return false;
 }
 
 bool DirectedGraph::searchVertex(const Vertex& v)
@@ -89,6 +91,7 @@ bool DirectedGraph::searchVertex(const Vertex& v)
             return true;
         }
     }
+    return false;
 }
 
 bool DirectedGraph::searchEdge(const Edge& e)
@@ -111,17 +114,26 @@ bool DirectedGraph::searchEdge(const Edge& e)
 
 void DirectedGraph::display(Vertex& v)const
 {
-
+    for(int ivalue = 0; ivalue <= iline; ivalue++)
+    {
+        if(line[ivalue].start == v.getId())
+        {
+            cout<<"|"<<v.getId()<<"| --> |"<<line[ivalue].dest<<"|"<<endl;
+        }
+    }
 }
 
 void DirectedGraph::display(Edge& e)const
 {
-
+    cout<<"|"<<e.start<<"| --> |"<<e.dest<<"|"<<endl;
 }
 
 void DirectedGraph::display()const
 {
+    for(int inum = 0 ; inum <= inode; inum++)
+    {
 
+    }
 }
 
 string DirectedGraph::toString()const
@@ -132,4 +144,6 @@ string DirectedGraph::toString()const
 bool DirectedGraph::clean()
 {
 
+
+    return true;
 }

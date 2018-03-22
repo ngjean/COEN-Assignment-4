@@ -17,12 +17,16 @@
 	<iostream>
 	"Vertex.h"
 
-1521523237 source:c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\src\directedgraph.cpp
+1521686312 source:c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\src\directedgraph.cpp
 	"DirectedGraph.h"
 
-1521602497 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\directedgraph.h
-	<Graph.h>
+1521676834 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\directedgraph.h
+	<string>
+	"Graph.h"
+	"Vertex.h"
+	"Edge.h"
 	<iostream>
+	<vector>
 
 1521676628 source:c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\src\vertex.cpp
 	"Vertex.h"

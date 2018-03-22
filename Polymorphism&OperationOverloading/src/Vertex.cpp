@@ -24,7 +24,8 @@ Vertex::~Vertex()
 
 Vertex::Vertex(const Vertex& other)
 {
-
+    value = other.getValue();
+    id = other.getId();
 }
 
 /*int Vertex::getIconnect()const
@@ -59,3 +60,4 @@ void Vertex::setValue(int ivalue)
 {
     value = ivalue;
 }
+
