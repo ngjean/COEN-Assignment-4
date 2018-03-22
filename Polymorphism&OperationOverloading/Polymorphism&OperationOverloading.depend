@@ -10,14 +10,13 @@
 	"Vertex.h"
 	"Edge.h"
 
-1521676618 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\vertex.h
+1521694312 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\vertex.h
 	<iostream>
 
-1521674370 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\edge.h
+1521694312 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\edge.h
 	<iostream>
-	"Vertex.h"
 
-1521686312 source:c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\src\directedgraph.cpp
+1521694231 source:c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\src\directedgraph.cpp
 	"DirectedGraph.h"
 
 1521676834 c:\users\jean carlos ng lee\documents\github\coen244-assignment-4\polymorphism&operationoverloading\include\directedgraph.h

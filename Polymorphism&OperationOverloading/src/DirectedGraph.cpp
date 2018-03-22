@@ -25,7 +25,7 @@ bool DirectedGraph::removeVertex(Vertex& v)
 {
     int iid;
     iid = v.getId();
-    for(int inum = 0; inum <= inode; inum++)
+    for(int inum = 0; inum < inode; inum++)
     {
         if(node[inum].getId() == iid)
         {
@@ -40,8 +40,8 @@ bool DirectedGraph::removeVertex(Vertex& v)
                     iline--;
                 }
             }
-            node.shrink_to_fit();
-            line.shrink_to_fit();
+            //node.shrink_to_fit();
+           // line.shrink_to_fit();
             return true;
         }
     }
@@ -65,7 +65,7 @@ bool DirectedGraph::addEdge(Edge& newLine)
 
 bool DirectedGraph::removeEdge(Edge & e)
 {
-    for(int ivalue =0 ; ivalue <= iline ; ivalue++)
+    for(int ivalue =0 ; ivalue < iline ; ivalue++)
     {
         if(line[ivalue].start == e.start)
         {
@@ -84,7 +84,7 @@ bool DirectedGraph::searchVertex(const Vertex& v)
 {
     int iid;
     iid = v.getId();
-    for(int inum = 0; inum <= inode; inum++)
+    for(int inum = 0; inum < inode; inum++)
     {
         if(node[inum].getId() == iid)
         {
@@ -99,7 +99,7 @@ bool DirectedGraph::searchEdge(const Edge& e)
     int istart, idest;
     istart = e.start;
     idest = e.dest;
-    for(int ivalue = 0; ivalue <= iline; ivalue++)
+    for(int ivalue = 0; ivalue < iline; ivalue++)
     {
         if(line[ivalue].start == istart)
         {
@@ -115,8 +115,8 @@ bool DirectedGraph::searchEdge(const Edge& e)
 void DirectedGraph::display(Vertex& v)const
 {
     int iid;
-    iid = v.getId();
-    for(int ivalue = 0; ivalue <= iline; ivalue++)
+    iid  = v.getId();
+    for(int ivalue = 0; ivalue < iline; ivalue++)
     {
         if(line[ivalue].start == iid)
         {
