@@ -16,6 +16,6 @@ Edge::~Edge()
 Edge::Edge(const Edge& other)
 {
     weight = other.weight;
-    next = new Edge();
-    *next = *other.next;
+    start = other.start;
+    dest = other.dest;
 }
