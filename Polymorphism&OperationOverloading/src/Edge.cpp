@@ -3,9 +3,11 @@ Programmer:Jean Carlos Ng
 */
 #include "Edge.h"
 
-Edge::Edge()
+Edge::Edge(int eW, int eStart, int eDest)
 {
-    //ctor
+	weight = eW;
+	start = eStart;
+	dest = eDest;
 }
 
 Edge::~Edge()
