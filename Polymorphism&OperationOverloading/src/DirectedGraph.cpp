@@ -109,12 +109,12 @@ bool DirectedGraph::searchEdge(const Edge& e)
     return false;
 }
 
-void DirectedGraph::display(Vertex& v) const
+void DirectedGraph::display(Vertex& v)const
 {
 
 }
 
-void DirectedGraph::display(Edge& e ) const
+void DirectedGraph::display(Edge& e)const
 {
 
 }
