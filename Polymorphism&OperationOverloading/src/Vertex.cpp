@@ -7,14 +7,14 @@ Vertex::Vertex()
 {
     value = 0;
     id = 0;
-    //iconnect = 0;
+    iconnect = 0;
 }
 
 Vertex::Vertex(int iid,int ivalue)
 {
    id = iid;
    value = ivalue;
-  // iconnect = 0;
+    iconnect = 0;
 }
 
 Vertex::~Vertex()
@@ -24,19 +24,22 @@ Vertex::~Vertex()
 
 Vertex::Vertex(const Vertex& other)
 {
-
+    id = other.id;
+    value = other.value;
+    iconnect = other.iconnect;
 }
 
-/*int Vertex::getIconnect()const
+int Vertex::getIconnect()const
 {
     return iconnect;
 }
 
-void Vertex::setIconnet(int inum)
+void Vertex::changeIconnet(int inum)
 {
-
+    iconnect = iconnect + inum;
 }
 
+/*
 void Vertex::setConnection(Edge& newConnection)
 {
     Edge next = newConnection;

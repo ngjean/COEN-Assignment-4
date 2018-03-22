@@ -11,13 +11,11 @@ class Vertex
         Vertex(const Vertex& other);
         int getValue()const;
         int getId()const;
-       // int getIconnect()const;
-       // void setIconnet(int);
+        int getIconnect()const;
+        void changeIconnet(int);
         void setValue(int);
-        //void setConnection(Edge& );
 
     private:
-        //vector<Edge> Connection;
-        int id, value;//,iconnect;
+        int id, value, iconnect;
 };
 #endif // VERTEX_H
