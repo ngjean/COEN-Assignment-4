@@ -1,7 +1,9 @@
 #ifndef EDGE_H
 #define EDGE_H
-#include<iostream>
-#include"Vertex.h"
+
+#include <iostream>
+#include "Vertex.h"
+
 using namespace std;
 
 class Edge
@@ -9,7 +11,7 @@ class Edge
     public:
         Edge();
         Edge(int,int,int);
-        Edge(const Edge& other);
+        Edge(const Edge&);
         virtual ~Edge();
 
         int weight;
@@ -17,3 +19,4 @@ class Edge
 };
 
 #endif // EDGE_H
+
