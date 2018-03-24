@@ -141,6 +141,7 @@ void DirectedGraph::display()const
     vector<int> vihead;
     vector<int> vitail;
     vector<string> vslist;
+
     int ihead, itail, ilone;
 
 //-----------------------------Check for tails and head---------------------------------------------------------------------------
