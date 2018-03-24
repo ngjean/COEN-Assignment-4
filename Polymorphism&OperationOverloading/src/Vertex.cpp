@@ -1,3 +1,4 @@
+
 /*
 Programmer:Jean Carlos Ng
 */
@@ -8,9 +9,8 @@ Vertex::Vertex()
     value = 0;
     id = 0;
     iconnect = 0;
-    //next = new Vertex();
-    //next = NULL;
-    visited = false;
+    arrivals = 0;
+    visited = 0;
 }
 
 Vertex::Vertex(int iid,int ivalue)
@@ -18,23 +18,22 @@ Vertex::Vertex(int iid,int ivalue)
    id = iid;
    value = ivalue;
    iconnect = 0;
-   //next = new Vertex();
-   //next = ptr;
-   visited = false;
+   arrivals = 0;
+   visited = 0;
 }
 
 Vertex::~Vertex()
 {
-    //delete vertex
+    //deleted vectex
 }
 
 Vertex::Vertex(const Vertex& other)
 {
-    value = other.getValue();
-    id = other.getId();
-    //next = other.next;
-    visited = other.visited;
+    id = other.id;
+    value = other.value;
     iconnect = other.iconnect;
+    arrivals = other.arrivals;
+    visited = other.visited;
 }
 
 int Vertex::getIconnect()const
@@ -42,29 +41,29 @@ int Vertex::getIconnect()const
     return iconnect;
 }
 
-/*void Vertex::setIconnet(int inum)
-{
-}*/
+int Vertex::getTotalArrivals(){
 
-void Vertex::setConnection(const Edge& newConnection)
+	return arrivals;
+}
+
+void Vertex::changeIconnet(int inum)
 {
-    // Edge next = newConnection;				I don't think this is necessary
-    connections.push_back(newConnection);
+    iconnect = iconnect + inum;
+}
+
+void Vertex::changeArrivals(int inum)
+{
+    arrivals = arrivals + inum;
+}
+
+/*
+void Vertex::setConnection(Edge& newConnection)
+{
+    Edge next = newConnection;
+    Connection.push_back(next);
     iconnect++;
 }
-
-void Vertex::removeConnection(const Edge& remo){
-
-	for (int j ; j <= connections.size() ; j++ ){
-
-		if (connections[j].dest == remo.dest || connections[j].start == remo.start ){
-
-			connections.erase(connections.begin() - (j-1));
-		}
-	}
-
-}
-
+*/
 
 int Vertex::getId()const
 {
@@ -81,12 +80,12 @@ void Vertex::setValue(int ivalue)
     value = ivalue;
 }
 
-void Vertex::setId(int iid){
+void Vertex::markVisited(){
 
-	id = iid;
+	visited = true;
 }
 
-void Vertex::setNext(Vertex v){
+bool Vertex::isVisited(){
 
-	next = &v;
+	return visited;
 }

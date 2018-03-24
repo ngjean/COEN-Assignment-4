@@ -1,11 +1,11 @@
 #ifndef DIRECTEDGRAPH_H
 #define DIRECTEDGRAPH_H
-#include<string>
 #include"Graph.h"
 #include"Vertex.h"
 #include"Edge.h"
 #include<iostream>
 #include<vector>
+#include<string>
 using namespace std;
 
 class DirectedGraph : public Graph
@@ -59,6 +59,7 @@ class DirectedGraph : public Graph
     private:
         vector<Edge> line;
         vector<Vertex> node;
+        int iline, inode;
 };
 
 #endif // DIRECTEDGRAPH_H
