@@ -23,11 +23,11 @@ bool DirectedGraph::addVertex(Vertex& newNode)
 bool DirectedGraph::removeVertex(Vertex& v)
 {
     int iid;
-    iid = v.getId();
+    iid = ;
     bool flag = false;
     for(int inum = 0; inum <= node.size(); inum++)
     {
-        if(node[inum].getId() == iid)
+        if(node[inum].getId() == v.getId())
         {
             node.erase(node.begin()+ (inum-1));
 
@@ -92,11 +92,10 @@ bool DirectedGraph::removeEdge(Edge &e)
 
 bool DirectedGraph::searchVertex(const Vertex& v)
 {
-    int iid;
-    iid = v.getId();
+    
     for(int inum = 0; inum <= node.size(); inum++)
     {
-        if(node[inum].getId() == iid)
+        if(node[inum].getId() == v.getId())
         {
             return true;
         }
@@ -105,14 +104,12 @@ bool DirectedGraph::searchVertex(const Vertex& v)
 
 bool DirectedGraph::searchEdge(const Edge& e)
 {
-    int istart, idest;
-    istart = e.start;
-    idest = e.dest;
+   
     for(int ivalue = 0; ivalue <= line.size(); ivalue++)
     {
-        if(line[ivalue].start == istart)
+        if(line[ivalue].start == e.start)
         {
-            if(line[ivalue].dest == idest)
+            if(line[ivalue].dest == e.dest)
             {
                 return true;
             }
