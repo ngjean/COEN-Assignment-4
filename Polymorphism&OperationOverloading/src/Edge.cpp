@@ -5,7 +5,18 @@ Programmer:Jean Carlos Ng
 
 Edge::Edge()
 {
-    //ctor
+	weight = 0;
+	start = 0;
+	dest = 0;
+}
+
+
+
+Edge::Edge(int eW, int eStart, int eDest)
+{
+	weight = eW;
+	start = eStart;
+	dest = eDest;
 }
 
 Edge::~Edge()
