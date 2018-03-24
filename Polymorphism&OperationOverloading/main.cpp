@@ -1,9 +1,21 @@
 #include <iostream>
-
+#include "Vertex.h"
+#include "Edge.h"
+#include "DirectedGraph.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    DirectedGraph *DGptr;
+    Vertex *Vptr;
+    Edge *Eptr;
+
+    DGptr = new DirectedGraph();
+    Vptr = new Vertex();
+    Eptr = new Edge();
+
+
+
+
     return 0;
 }

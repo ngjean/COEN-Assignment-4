@@ -12,6 +12,8 @@ class Edge
         Edge(const Edge& other);
         virtual ~Edge();
 
+        void print();
+
         int weight;
         int start, dest;
 };

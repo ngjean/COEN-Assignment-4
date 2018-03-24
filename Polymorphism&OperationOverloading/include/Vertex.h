@@ -10,12 +10,14 @@ class Vertex
         virtual ~Vertex();
         Vertex(const Vertex& other);
         int getValue()const;
+        void setValue(int);
         int getId()const;
         int getIconnect()const;
         void changeIconnet(int);
-        void setValue(int);
+        int getIarrive()const;
+        void changeIarrive(int);
 
     private:
-        int id, value, iconnect;
+        int id, value, iconnect, iarrive;
 };
 #endif // VERTEX_H

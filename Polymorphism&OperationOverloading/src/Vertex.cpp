@@ -8,13 +8,15 @@ Vertex::Vertex()
     value = 0;
     id = 0;
     iconnect = 0;
+    iarrive = 0;
 }
 
 Vertex::Vertex(int iid,int ivalue)
 {
    id = iid;
    value = ivalue;
-    iconnect = 0;
+   iconnect = 0;
+   iarrive = 0;
 }
 
 Vertex::~Vertex()
@@ -47,6 +49,16 @@ void Vertex::setConnection(Edge& newConnection)
     iconnect++;
 }
 */
+
+void Vertex::changeIarrive(int inum)
+{
+    iarrive = iarrive + inum;
+}
+
+int Vertex::getIarrive()const
+{
+    return iarrive;
+}
 
 int Vertex::getId()const
 {

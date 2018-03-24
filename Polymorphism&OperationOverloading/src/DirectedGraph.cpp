@@ -5,8 +5,6 @@ Programmer:Jean Carlos Ng
 
 DirectedGraph::DirectedGraph()
 {
-    inode = 0;
-    iline = 0;
 }
 
 DirectedGraph::~DirectedGraph()
@@ -17,7 +15,6 @@ DirectedGraph::~DirectedGraph()
 bool DirectedGraph::addVertex(Vertex& newNode)
 {
     node.push_back(newNode);
-    inode++;
     return true;
 }
 
@@ -25,79 +22,91 @@ bool DirectedGraph::removeVertex(Vertex& v)
 {
     int iid;
     iid = v.getId();
-    for(int inum = 0; inum <= inode; inum++)
+    for(int inum = 0; inum < node.size() ; inum++)
     {
         if(node[inum].getId() == iid)
         {
-            node.erase(node.begin()+ (inum-1));
-            inode--;
-
-            for(int ivalue = 0 ; ivalue <= iline; ivalue++)
+            node.erase(node.begin()+ inum);
+            for(int ivalue = 0 ; ivalue < line.size(); ivalue++)
             {
                 if(iid == line[ivalue].start)
                 {
-                    line.erase(line.begin() + (ivalue-1));
-                    iline--;
+                    line.erase(line.begin() + ivalue);
                 }
             }
-            node.shrink_to_fit();
-            line.shrink_to_fit();
             return true;
         }
     }
+    return false;
 }
 
 bool DirectedGraph::addEdge(Edge& newLine)
 {
-    for(int inum =0; inum<= inode; inum++)
+    int istart(-1), idest(-1);
+    for(int inum =0; inum < node.size(); inum++)
     {
         if(node[inum].getId() == newLine.start)
         {
-            node[inum].changeIconnet(1);
+            istart = inum;
+        }
+        if(node[inum].getId() == newLine.dest)
+        {
+             idest = inum;
         }
     }
-
-    line.push_back(newLine);
-    iline++;
-    return true;
+    if(istart == -1 || idest == -1)
+    {
+        return false;
+    }
+    else
+    {
+        node[istart].changeIconnet(1);
+        node[idest].changeIarrive(1);
+        line.push_back(newLine);
+        return true;
+    }
 }
 
 bool DirectedGraph::removeEdge(Edge & e)
 {
-    for(int ivalue =0 ; ivalue <= iline ; ivalue++)
+    for(int ivalue = 0 ; ivalue < line.size() ; ivalue++)
     {
         if(line[ivalue].start == e.start)
         {
             if(line[ivalue].dest == e.dest)
             {
-                line.erase(line.begin() + (ivalue-1));
-                iline--;
+                line.erase(line.begin() + ivalue);
 
-                for(int inum =0; inum<= inode; inum++)
+                for(int inum =0; inum< node.size(); inum++)
                 {
                     if(node[inum].getId() == e.start)
                     {
                         node[inum].changeIconnet(-1);
                     }
+                    if(node[inum].getId() == e.dest)
+                    {
+                         node[inum].changeIarrive(-1);
+                    }
                 }
-
                 return true;
             }
         }
     }
+    return false;
 }
 
 bool DirectedGraph::searchVertex(const Vertex& v)
 {
     int iid;
     iid = v.getId();
-    for(int inum = 0; inum <= inode; inum++)
+    for(int inum = 0; inum < node.size(); inum++)
     {
         if(node[inum].getId() == iid)
         {
             return true;
         }
     }
+    return false;
 }
 
 bool DirectedGraph::searchEdge(const Edge& e)
@@ -105,7 +114,7 @@ bool DirectedGraph::searchEdge(const Edge& e)
     int istart, idest;
     istart = e.start;
     idest = e.dest;
-    for(int ivalue = 0; ivalue <= iline; ivalue++)
+    for(int ivalue = 0; ivalue < line.size(); ivalue++)
     {
         if(line[ivalue].start == istart)
         {
@@ -122,11 +131,34 @@ void DirectedGraph::display(Vertex& v)const
 {
     int iid;
     iid = v.getId();
-    for(int ivalue = 0 ; ivalue < iline; ivalue++)
+
+    for(int inum = 0 ; inum < node.size() ; inum++)
     {
-        if(line[ivalue].start == iid)
+        if(node[inum].getId() == iid)
         {
-            cout<<"|"<<line[ivalue].start<<"| --> |"<<line[ivalue].dest<<"|"<<endl;
+            if(node[inum].getIarrive() != 0)
+            {
+                cout<<"From 'X' Vertex to a given Vertex"<<endl<<endl;
+                for(int ivalue = 0 ;ivalue < line.size(); ivalue++)
+                {
+                    if(line[ivalue].dest == iid)
+                    {
+                        cout<<"|"<<line[ivalue].start<<"-->|"<<line[ivalue].dest<<"|"<<endl;
+                    }
+                }
+            }
+
+            if(node[inum].getIconnect() != 0 )
+            {
+                cout<<"From a given Vertex to 'X' Vertex"<<endl<<endl;
+                for(int ivalue = 0 ;ivalue < line.size(); ivalue++)
+                {
+                    if(line[ivalue].start == iid)
+                    {
+                         cout<<"|"<<line[ivalue].start<<"-->|"<<line[ivalue].dest<<"|"<<endl;
+                    }
+                }
+            }
         }
     }
 }
@@ -138,68 +170,56 @@ void DirectedGraph::display(Edge& e)const
 
 void DirectedGraph::display()const
 {
-    vector<int> vihead;
-    vector<int> vitail;
-    vector<string> vslist;
 
-    int ihead, itail, ilone;
-
-//-----------------------------Check for tails and head---------------------------------------------------------------------------
-    for(int inum = 0; inum < iline; inum++)
-    {
-        ihead = 0;
-        itail = 0;
-        for(int ivalue = 0; ivalue < iline ; ivalue++)
-        {
-            if(line[inum].start == line[ivalue].dest)
-            {
-                ihead++;
-            }
-            if(line[inum].dest == line[ivalue].start)
-            {
-                itail++;
-            }
-        }
-        if(ihead == 0)
-        {
-            vihead.push_back(inum);
-        }
-        if(itail == 0)
-        {
-            vitail.push_back(inum);
-        }
-    }
-//----------------------------------------------------------------------------------------------------------------------------------
-// ------------------------- add path to display-----------------------------------------------------------------------------------
-
-
-//--------------------------------------------------- add lone vertex to display---------------------------------------------------
-    for(int inum = 0; inum < inode; inum++)
-    {
-        ilone = 0;
-        for(int ivalue = 0 ; ivalue < iline; ivalue++)
-        {
-            if(node[inum].getId() == line[ivalue].start || node[inum].getId() == line[ivalue].dest)
-            {
-                ilone++;
-            }
-        }
-        if(ilone == 0)
-        {
-            int iid;
-            iid = node[inum].getId();
-            string list;
-            list = to_string(iid);
-            vslist.push_back(list);
-        }
-    }
-//----meaning that if there isnt any edge that has a start or dest with the vertex 'X' Id woudl imply that this vertex is a lone vertex-----
 }
 
 string DirectedGraph::toString()const
 {
+    vector<Vertex> vihead;
+    vector<Vertex> vitail;
+    vector<Vertex> vilone;
+    vector<string> vslist;
+
+    //----head and tail and lone vertex-----------------------------------
+    for(int inum =0 ; inum < node.size();inum++)
+    {
+        if(node[inum].getIarrive() == 0 && node[inum].getIconnect() != 0 )
+        {
+            vihead.push_back(node[inum]);
+        }
+
+        if(node[inum].getIarrive() != 0 && node[inum].getIconnect() == 0 )
+        {
+            vitail.push_back(node[inum]);
+        }
+
+        if(node[inum].getIarrive() == 0 && node[inum].getIconnect() == 0 )
+        {
+            vilone.push_back(node[inum]);
+        }
+    }
+    //---------------------------------------------------------------------
+
+    for(int inum = 0 ; inum < vihead.size(); inum++)//for all the head
+    {
+        for(int ivalue = 0; ivalue < line.size(); ivalue++)
+        {
+            if(vihead[inum].getId() == line[ivalue].start)
+            {
+                int istore;
+                string store;
+                istore = line[ivalue].start;
+                store = to_string(istore);
+                istore = line[ivalue].dest;
+                store = store+"-"+to_string(istore);
+
+                vslist.push_back(store);
+            }
+        }
+    }
 
 }
+
 
 bool DirectedGraph::clean()
 {

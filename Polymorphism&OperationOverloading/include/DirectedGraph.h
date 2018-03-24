@@ -59,7 +59,6 @@ class DirectedGraph : public Graph
     private:
         vector<Edge> line;
         vector<Vertex> node;
-        int iline, inode;
 };
 
 #endif // DIRECTEDGRAPH_H
