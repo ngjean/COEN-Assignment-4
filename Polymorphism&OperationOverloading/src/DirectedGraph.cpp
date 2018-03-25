@@ -29,7 +29,7 @@ bool DirectedGraph::removeVertex(Vertex& v)
             node.erase(node.begin()+ inum);
             for(int ivalue = 0 ; ivalue < line.size(); ivalue++)
             {
-                if(iid == line[ivalue].start)
+                if(iid == line[ivalue].start || iid == line[ivalue].dest)
                 {
                     line.erase(line.begin() + ivalue);
                 }
@@ -138,19 +138,19 @@ void DirectedGraph::display(Vertex& v)const
         {
             if(node[inum].getIarrive() != 0)
             {
-                cout<<"From 'X' Vertex to a given Vertex"<<endl<<endl;
+                cout<<"From 'X' Vertex to a given Vertex"<<endl;
                 for(int ivalue = 0 ;ivalue < line.size(); ivalue++)
                 {
                     if(line[ivalue].dest == iid)
                     {
-                        cout<<"|"<<line[ivalue].start<<"-->|"<<line[ivalue].dest<<"|"<<endl;
+                        cout<<"|"<<line[ivalue].start<<"|-->|"<<line[ivalue].dest<<"|"<<endl;
                     }
                 }
             }
-
+            cout<<endl;
             if(node[inum].getIconnect() != 0 )
             {
-                cout<<"From a given Vertex to 'X' Vertex"<<endl<<endl;
+                cout<<"From a given Vertex to 'X' Vertex"<<endl;
                 for(int ivalue = 0 ;ivalue < line.size(); ivalue++)
                 {
                     if(line[ivalue].start == iid)
@@ -165,7 +165,15 @@ void DirectedGraph::display(Vertex& v)const
 
 void DirectedGraph::display(Edge& e)const
 {
-    cout<<"|"<<e.start<<"|-->|"<<e.dest<<"|"<<endl;
+    for(int ivalue = 0 ; ivalue < line.size(); ivalue++)
+    {
+        if(line[ivalue].start == e.start && line[ivalue].dest == e.dest)
+        {
+             cout<<"|"<<e.start<<"|-->|"<<e.dest<<"|"<<endl;
+             return;
+        }
+    }
+    cout<<"The given Edge either doesnt exist or counld not be found"<<endl;
 }
 
 void DirectedGraph::display()const
