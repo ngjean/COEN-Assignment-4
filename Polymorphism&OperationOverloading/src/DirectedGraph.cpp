@@ -285,3 +285,49 @@ bool DirectedGraph::clean()
 	bool flag4 = false;
 	return flag4;
 }
+
+bool DirectedGraph::operator==(const DirectedGraph &other) const{
+
+	bool flag = true;
+	
+
+	// Vectors of Vertices of this and other DirectedGraph are compared
+
+	if (node.size() != other.node.size()){
+
+		flag = false;
+	}
+
+	else{
+
+		for (unsigned int j = 0; j < node.size(); j++){
+
+			if(node[j].getId() != other.node[j].getId() || node[j].getValue() != other.node[j].getValue()){
+
+				flag = false;
+			}
+		}
+	}
+
+
+	// Vectors of Edges of this and other DirectedGraph are compared
+
+	if (line.size() != other.line.size()){
+
+			flag = false;
+	}
+
+	else{
+
+		for (unsigned int j = 0; j < line.size(); j++){
+
+			if(line[j].start != other.line[j].start || line[j].dest != other.line[j].dest  || line[j].weight != other.line[j].weight){
+
+				flag = false;
+			}
+		}
+	}
+
+	return flag;
+}
+
