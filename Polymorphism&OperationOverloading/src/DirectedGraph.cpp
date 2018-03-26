@@ -331,3 +331,28 @@ bool DirectedGraph::operator==(const DirectedGraph &other) const{
 	return flag;
 }
 
+const DirectedGraph& DirectedGraph::operator =(const DirectedGraph& other){
+
+	if(&other != this){
+
+		if(!(*this == other)){
+			
+			node.clear();
+			line.clear();
+			for (unsigned int i = 0; i < other.node.size();i++){
+				
+				node[i] = other.node[i];
+			}
+			
+			for (unsigned int j = 0; j < other.line.size(); j++){
+				
+				line[j] = other.line[j];
+			}
+			
+		}
+	}
+
+	return *this;
+}
+
+
