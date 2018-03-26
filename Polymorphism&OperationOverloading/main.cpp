@@ -30,7 +30,7 @@ int main()
 //---------------------------------------------------------------------------------
     cout<<endl;
 //-------------------ADD EDGE TO GRAPH---------------------------------------------
-    Eptr = new Edge(11,14,5);// add a edge from vertex 11 to 14 with a weight of 5
+    Eptr = new Edge(10,16,5);// add a edge from vertex 10 to 16 with a weight of 5
     if(DGptr->addEdge(*Eptr))
     {
         cout<<"Edge add successfully"<<endl;
@@ -135,6 +135,8 @@ int main()
     DGptr->addEdge(*Eptr);
 
     DGptr->display();
+
+    cout<<DGptr->toString();
 
 
     return 0;

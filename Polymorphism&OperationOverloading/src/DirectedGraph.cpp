@@ -192,18 +192,6 @@ void DirectedGraph::display()// displaying graph as of connection betwen two ver
     {
         cout<<"|"<<vilone[inum].getId()<<"|"<<endl;
     }
-
-    cout<<endl<<"HEAD VERTEX: "<<endl;
-     for(unsigned int inum = 0; inum <vihead.size(); inum++)
-    {
-        cout<<"|"<<vihead[inum].getId()<<"|"<<endl;
-    }
-
-    cout<<endl<<"TAIL VERTEX: "<<endl;
-     for(unsigned int inum = 0; inum <vitail.size(); inum++)
-    {
-        cout<<"|"<<vitail[inum].getId()<<"|"<<endl;
-    }
     cout<<endl;
     for(unsigned int inum = 0; inum < vihead.size(); inum++) // for all head
     {
@@ -222,7 +210,7 @@ void DirectedGraph::display()// displaying graph as of connection betwen two ver
            }
        }
     }
-
+    cout<<"GRAPH ALL POSSIBLE PATH WILL ALL POSSIBLE STOP"<<endl;
    for(unsigned int inum = 0 ; inum < vslist.size(); inum++)
    {
        cout<<vslist[inum]<<endl;
@@ -252,8 +240,17 @@ string DirectedGraph::toString()
        }
     }
 
+    for(unsigned int ivalue = 0; ivalue < vslist.size(); ivalue++)
+    {
+        show = show + vslist[ivalue] + "; ";
+    }
 
+   for(unsigned int ivalue = 0; ivalue < vilone.size(); ivalue++)
+   {
+       show = show + "|" + to_string(vilone[ivalue].getId()) + "|; ";
+   }
 
+    return show;
 }
 
 void DirectedGraph::CheckConnect(int inum, string store)
