@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    DirectedGraph *DGptr;
+    DirectedGraph *DGptr, *DGptr2;
     Vertex *Vptr;
     Edge *Eptr;
 
@@ -124,9 +124,12 @@ int main()
     DGptr->display(*Eptr);// show the path of edge which would be 5 -> 9
 //---------------------------------------------------------------------------------
     cout<<endl;
-
+//------------------TEST DISPLAY VERTEX-------------------------------------------
     Vptr = new Vertex(14,9);
     DGptr->display(*Vptr);
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//-------------------TEST DISPLAY ------------------------------------------------
     Eptr = new Edge(14,18,15);
     DGptr->addEdge(*Eptr);
     Eptr = new Edge(18,19,15);
@@ -135,9 +138,34 @@ int main()
     DGptr->addEdge(*Eptr);
 
     DGptr->display();
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//-----------------TEST toString---------------------------------------------------
+    cout<<DGptr->toString()<<endl;
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//-----------------------TEST OVERLOADING-------------------------------------------
 
-    cout<<DGptr->toString();
+    DGptr2 = new DirectedGraph();
 
+    if(DGptr == DGptr2)
+    {
+        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+    }
+
+    DGptr2 = DGptr;
+    if(DGptr == DGptr2)
+    {
+        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+    }
 
     return 0;
 }

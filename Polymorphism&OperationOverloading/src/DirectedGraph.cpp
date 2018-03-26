@@ -14,7 +14,7 @@ DirectedGraph::~DirectedGraph()
 
 bool DirectedGraph::addVertex(Vertex& newNode)
 {
-    for(int inum = 0; inum < node.size(); inum++)
+    for(unsigned int inum = 0; inum < node.size(); inum++)
     {
         if(node[inum].getId() == newNode.getId())
         {
@@ -322,3 +322,114 @@ bool DirectedGraph::clean()
     node.clear();
     return true;
 }
+
+bool DirectedGraph::operator==(const DirectedGraph &other) const
+{
+
+	bool flag = true;
+	unsigned int inodecheck(0);
+	unsigned int ilinecheck(0);
+
+	// Vectors of Vertices of this and other DirectedGraph are compared
+
+	if (node.size() != other.node.size())
+	{
+		flag = false;
+	}
+
+	else
+    {
+        for(unsigned int inum = 0; inum < other.node.size(); inum++)
+        {
+            for (unsigned int j = 0; j < node.size(); j++)
+            {
+                if(node[j].getId() == other.node[inum].getId() || node[j].getValue() == other.node[inum].getValue())
+                {
+                    inodecheck++;
+                }
+            }
+        }
+        if(inodecheck != node.size())
+        {
+            flag = false;
+        }
+    }
+
+	// Vectors of Edges of this and other DirectedGraph are compared
+	if (line.size() != other.line.size()){
+
+			flag = false;
+	}
+	else
+    {
+        for(unsigned int inum = 0; inum < other.line.size(); inum++)
+        {
+            for (unsigned int j = 0; j < line.size(); j++)
+            {
+                if(line[j].start == other.line[inum].start || line[j].dest == other.line[inum].dest  || line[j].weight == other.line[inum].weight)
+                {
+                    ilinecheck++;
+                }
+            }
+
+            if(ilinecheck != line.size())
+            {
+                flag = false;
+            }
+
+        }
+	}
+
+	return flag;
+}
+
+const DirectedGraph& DirectedGraph::operator =(const DirectedGraph& other){
+
+	if(&other != this)
+    {
+			node.clear();
+			line.clear();
+			for (unsigned int i = 0; i < other.node.size();i++)
+            {
+				node.push_back(other.node[i]);
+			}
+
+			for(unsigned int j = 0; j < other.line.size(); j++)
+			{
+
+				line.push_back(other.line[j]);
+			}
+	}
+
+	return *this;
+}
+
+DirectedGraph DirectedGraph::operator++(DirectedGraph&)
+{
+    for(unsigned int inum = 0; inum < line.size(); inum++)
+    {
+        line[inum].weight = line[inum].weight + 1;
+    }
+    return *this;
+}
+
+DirectedGraph DirectedGraph::operator+(DirectedGraph& other)
+{
+    DirectedGraph newGraph;
+
+    newGraph = this;
+
+    for (unsigned int i = 0; i < other.node.size();i++)
+    {
+        newGraph.addVertex(other.node[i]);
+    }
+
+    for(unsigned int j = 0; j < other.line.size(); j++)
+    {
+        newGraph.addEdge(other.line[j]);
+    }
+
+    return newGraph;
+}
+
+

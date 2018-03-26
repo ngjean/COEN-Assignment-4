@@ -55,9 +55,23 @@ class DirectedGraph : public Graph
         //remove all the vertices and edges;
         virtual bool clean();
 
+        //check the connectiong between vertex that are not head
         virtual void CheckConnect(int,string);
 
+        //to check if a vertex is head tail or lonely/orphan
         virtual void VertexCheck();
+
+        // G1 == G2, returns true if G1 and G2 have the exact same vertices and edges
+        bool operator==(const DirectedGraph&) const;
+
+        //G1 = G2, assigns Graph G2 to Graph G1;
+        const DirectedGraph& operator=(const DirectedGraph& );
+
+        //G++ and ++G, increases the weights of all edges by one;
+        DirectedGraph& operator++(DirectedGraph&);
+
+        //G3 = G1 + G2, returns a graph that contains all the nodes of G1 and G2, all the edges of G1 and G2;
+        DirectedGraph& operator+(DirectedGraph&);
 
     private:
         vector<Edge> line;
