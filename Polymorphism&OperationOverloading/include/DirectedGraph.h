@@ -61,6 +61,8 @@ class DirectedGraph : public Graph
         //to check if a vertex is head tail or lonely/orphan
         virtual void VertexCheck();
 
+        //----------OVERLOADING-----------------------------------------------------
+
         // G1 == G2, returns true if G1 and G2 have the exact same vertices and edges
         bool operator==(const DirectedGraph&) const;
 
@@ -68,10 +70,19 @@ class DirectedGraph : public Graph
         const DirectedGraph& operator=(const DirectedGraph& );
 
         //G++ and ++G, increases the weights of all edges by one;
-        DirectedGraph& operator++(DirectedGraph&);
+        DirectedGraph operator++();
+
+        //G1 > G2, returns boolean if the sum of weights of G1’s edges is greater than the sum of weights of G2’s edges;
+        bool operator>(const DirectedGraph&)const;
 
         //G3 = G1 + G2, returns a graph that contains all the nodes of G1 and G2, all the edges of G1 and G2;
-        DirectedGraph& operator+(DirectedGraph&);
+        DirectedGraph operator+(DirectedGraph&);
+
+        //<< G outputs the graph G.
+       friend ostream& operator<<( ostream&, const DirectedGraph& );
+
+
+
 
     private:
         vector<Edge> line;

@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    DirectedGraph *DGptr, *DGptr2;
+    DirectedGraph *DGptr,*DGptr2;
     Vertex *Vptr;
     Edge *Eptr;
 
@@ -144,10 +144,37 @@ int main()
     cout<<DGptr->toString()<<endl;
 //---------------------------------------------------------------------------------
     cout<<endl;
-//-----------------------TEST OVERLOADING-------------------------------------------
 
+
+
+
+//-----------------------TEST OVERLOADING--------------------------------------------------------------------------------------------------
     DGptr2 = new DirectedGraph();
-
+    DirectedGraph DG3;
+//-----------------------------TEST OVERLOADING OPERATOR '=='--------------------------------
+    if(DGptr == DGptr2) // GRAPH 2 doesnt have any vertex or edge // TEST '=='
+    {
+        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+    }
+//-----------------------------------------------------------------------------------
+    cout<<endl;
+//---------------------------TEST OVERLOADING OPERATOR '>'----------------------------
+    if(DGptr>DGptr2)// GRAPH 2 doesnt have any vertex or edge
+    {
+        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
+    }
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//----------------------------TEST OVERLOADING OPERATOR '='------------------------
+    DGptr2 = DGptr; //  GRAPH#2 = GRAPH#1 // TEST '='
     if(DGptr == DGptr2)
     {
         cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
@@ -157,15 +184,30 @@ int main()
         cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
     }
 
-    DGptr2 = DGptr;
-    if(DGptr == DGptr2)
+    if(DGptr>DGptr2)
     {
-        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
     }
     else
     {
-        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
     }
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//-------------------TEST OVERLOADING OPERATOR '++' ------------------------------
+    DGptr=DGptr++;//add 1 to all its edge of DGptr
+    if(DGptr>DGptr2)
+    {
+        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
+    }
+//---------------------------------------------------------------------------------
+    cout<<endl;
+//----------------------------TEST OVERLOADING '+'-----------------------------------
+
 
     return 0;
 }
