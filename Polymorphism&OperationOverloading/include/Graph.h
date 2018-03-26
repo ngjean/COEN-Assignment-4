@@ -34,10 +34,10 @@ class Graph
         // displays the path that contains the edge.
         virtual void display(Edge& ) const = 0;
         // displays the whole graph with your own defined format
-        virtual void display() const = 0;
+        virtual void display() = 0;
          // converts the whole graph to a string such as 1-2-4-5; 1-3-5; each path
          // is separated by ';'
-        virtual string toString () const = 0;
+        virtual string toString () = 0;
         //remove all the vertices an
 };
 

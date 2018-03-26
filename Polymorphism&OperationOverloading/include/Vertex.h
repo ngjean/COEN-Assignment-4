@@ -19,5 +19,6 @@ class Vertex
 
     private:
         int id, value, iconnect, iarrive;
+        Vertex *next;
 };
 #endif // VERTEX_H

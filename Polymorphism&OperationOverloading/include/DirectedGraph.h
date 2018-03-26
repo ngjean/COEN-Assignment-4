@@ -46,19 +46,27 @@ class DirectedGraph : public Graph
         virtual void display(Edge& ) const;
 
         // displays the whole graph with your own defined format
-        virtual void display() const;
+        virtual void display();
 
         // converts the whole graph to a string such as 1-2-4-5; 1-3-5; each path
         // is separated by ';'
-        virtual string toString () const;
+        virtual string toString ();
 
         //remove all the vertices and edges;
         virtual bool clean();
 
+        virtual void CheckConnect(int,string);
+
+        virtual void VertexCheck();
 
     private:
         vector<Edge> line;
         vector<Vertex> node;
+        vector<Vertex> vihead;
+        vector<Vertex> vitail;
+        vector<Vertex> vilone;
+        vector<string> vslist;
+
 };
 
 #endif // DIRECTEDGRAPH_H

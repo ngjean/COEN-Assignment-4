@@ -15,22 +15,22 @@ int main()
     Vptr = new Vertex(0,0);
     if(DGptr->addVertex(*Vptr))
     {
-        cout<<"Vertex "<<0<<" with a value of "<<0<<" added successfully"<<endl;
+        cout<<"Vertex "<<Vptr->getId()<<" with a value of "<<Vptr->getValue()<<" added successfully"<<endl;
     }
     else
     {
-        cout<<"FAIL TO ADD VERTEX"<<endl;
+        cout<<"VERTEX ALREADY EXIST. FAIL TO ADD VERTEX "<<endl;
     }
 
-    for(int inum = 0 ; inum < 10; inum++) // add vertex with ID 1-10
+    for(int inum = 0 ; inum <= 10; inum++) // add vertex with ID 1-10
     {
-        Vptr = new Vertex(inum+1, 2*inum+1);
+        Vptr = new Vertex(inum+10, 2*inum+1);
         DGptr->addVertex(*Vptr);
     }
 //---------------------------------------------------------------------------------
     cout<<endl;
 //-------------------ADD EDGE TO GRAPH---------------------------------------------
-    Eptr = new Edge(1,4,5);// add a edge from vertex 1 to 4 with a weight of 5
+    Eptr = new Edge(11,14,5);// add a edge from vertex 11 to 14 with a weight of 5
     if(DGptr->addEdge(*Eptr))
     {
         cout<<"Edge add successfully"<<endl;
@@ -39,7 +39,7 @@ int main()
     {
         cout<<"FAIL TO ADD EDGE"<<endl;
     }
-    Eptr = new Edge(9,11,5);// add a edge from vertex 9 to 11 with a weight of 5 which vertex 11 doesnt exsist
+    Eptr = new Edge(19,100,5);// add a edge from vertex 19 -> 100 with a weight of 5 which vertex 100 doesnt exsist
     if(DGptr->addEdge(*Eptr))
     {
         cout<<"Edge add successfully"<<endl;
@@ -48,27 +48,27 @@ int main()
     {
         cout<<"FAIL TO ADD EDGE"<<endl;
     }
-    Eptr = new Edge(1,5,3);// add a edge from vertex 1 -> 5 with a weight of 3
+    Eptr = new Edge(11,15,3);// add a edge from vertex 11 -> 15 with a weight of 3
     DGptr->addEdge(*Eptr);
 
-    Eptr = new Edge(4,7,6);// add a edge from vertex 4 -> 7 with a weight of 6
+    Eptr = new Edge(14,17,6);// add a edge from vertex 14 -> 17 with a weight of 6
     DGptr->addEdge(*Eptr);
 
-    Eptr = new Edge(5,9,11);// add a edge from vertex 5 -> 9 with a weight of 11
+    Eptr = new Edge(15,19,11);// add a edge from vertex 15 -> 19 with a weight of 11
     DGptr->addEdge(*Eptr);
 
-    Eptr = new Edge(2,8,12);// add a edge from vertex 2 -> 8 with a weight of 12
+    Eptr = new Edge(12,18,12);// add a edge from vertex 12 -> 18 with a weight of 12
     DGptr->addEdge(*Eptr);
 
-    Eptr = new Edge(2,9,13);// add a edge from vertex 2 -> 9 with a weight of 13
+    Eptr = new Edge(12,19,13);// add a edge from vertex 12 -> 19 with a weight of 13
     DGptr->addEdge(*Eptr);
 
-    Eptr = new Edge(3,6,5);// add a edge from vertex 3 -> 6 with a weight of 5
+    Eptr = new Edge(13,16,5);// add a edge from vertex 13 -> 16 with a weight of 5
     DGptr->addEdge(*Eptr);
 //---------------------------------------------------------------------------------
     cout<<endl;
 //------------TEST SEARCH EDGE--------------------------------------------
-    Eptr = new Edge(1,5,3);
+    Eptr = new Edge(11,15,3);
     if(DGptr->searchEdge(*Eptr))
     {
         cout<<"The given Edge Exist"<<endl;
@@ -91,7 +91,7 @@ int main()
 //---------------------------------------------------------------------------------
     cout<<endl;
 //--------------------TEST SEARCH VERTEX------------------------------------------
-    Vptr = new Vertex(6,13);//vertex with id 6
+    Vptr = new Vertex(16,13);//vertex with id 6
     if(DGptr->searchVertex(*Vptr))//vertex with id 6
     {
         cout<<"The given Vertex Exist"<<endl;
@@ -115,18 +115,24 @@ int main()
 //--------------------------TEST DISPLAY GIVEN EDGE-------------------------------
     DGptr->display(*Eptr);// show the path of edge which would be 1 -> 5 which was previously eliminated while testing remove edge
     DGptr->addEdge(*Eptr);//to avoid confusion
-    Eptr = new Edge(3,6,5);
+    Eptr = new Edge(13,16,5);
     DGptr->display(*Eptr);// show the path of edge which would be 3 -> 6 which there isnt because vertex 6 was eliminated before while testing remove vertex
     DGptr->addVertex(*Vptr);//addign back the vertex to the graph
     DGptr->addEdge(*Eptr);// reconnecting the edge form 3->6
     DGptr->display(*Eptr);// now it will show 3->6
-    Eptr = new Edge(5,9,11);
+    Eptr = new Edge(15,19,11);
     DGptr->display(*Eptr);// show the path of edge which would be 5 -> 9
 //---------------------------------------------------------------------------------
     cout<<endl;
 
-    Vptr = new Vertex(4,9);
+    Vptr = new Vertex(14,9);
     DGptr->display(*Vptr);
+    Eptr = new Edge(14,18,15);
+    DGptr->addEdge(*Eptr);
+    Eptr = new Edge(18,19,15);
+    DGptr->addEdge(*Eptr);
+    Eptr = new Edge(19,20,15);
+    DGptr->addEdge(*Eptr);
 
     DGptr->display();
 
