@@ -5,73 +5,64 @@ Programmer:Jean Carlos Ng
 
 Vertex::Vertex()
 {
-    value = 0;
-    id = 0;
-    iconnect = 0;
-    iarrive = 0;
+    value = 0;  // initialize value
+    id = 0;  // initialize value
+    iconnect = 0;  // initialize value
+    iarrive = 0; // initialize value
 }
 
 Vertex::Vertex(int iid,int ivalue)
 {
-   id = iid;
-   value = ivalue;
-   iconnect = 0;
-   iarrive = 0;
+   id = iid;  // initialize value with a given value
+   value = ivalue; // initialize value with a given value
+   iconnect = 0;// initialize value
+   iarrive = 0;// initialize value
 }
 
 Vertex::~Vertex()
 {
-    //deleted vectex
+    //deleted vertex
 }
 
 Vertex::Vertex(const Vertex& other)
 {
-    id = other.id;
-    value = other.value;
-    iconnect = other.iconnect;
-    iarrive = other.iarrive;
+    id = other.id;// initialize value with a given value
+    value = other.value;// initialize value with a given value
+    iconnect = other.iconnect;// initialize value with a given value
+    iarrive = other.iarrive;// initialize value with a given value
 }
 
 int Vertex::getIconnect()const
 {
-    return iconnect;
+    return iconnect; // return iconnect
 }
 
 void Vertex::changeIconnet(int inum)
 {
-    iconnect = iconnect + inum;
+    iconnect = iconnect + inum; // it increase iconnect by inum
 }
-
-/*
-void Vertex::setConnection(Edge& newConnection)
-{
-    Edge next = newConnection;
-    Connection.push_back(next);
-    iconnect++;
-}
-*/
 
 void Vertex::changeIarrive(int inum)
 {
-    iarrive = iarrive + inum;
+    iarrive = iarrive + inum; // it increase iarrive by inum
 }
 
 int Vertex::getIarrive()const
 {
-    return iarrive;
+    return iarrive; //return iarrive
 }
 
 int Vertex::getId()const
 {
-    return id;
+    return id; // return id
 }
 
 int Vertex::getValue()const
 {
-    return value;
+    return value; // return value
 }
 
 void Vertex::setValue(int ivalue)
 {
-    value = ivalue;
+    value = ivalue; // set value to a given int name ivalue
 }

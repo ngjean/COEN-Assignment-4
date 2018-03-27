@@ -11,8 +11,9 @@ using namespace std;
 class DirectedGraph : public Graph
 {
     public:
-        DirectedGraph();
-        virtual ~DirectedGraph();
+        DirectedGraph(); // constructor
+
+        virtual ~DirectedGraph();//destructor
 
         //adds one vertex; returns bool if added successfully.
         virtual bool addVertex(Vertex& );
@@ -52,7 +53,7 @@ class DirectedGraph : public Graph
         // is separated by ';'
         virtual string toString ();
 
-        //remove all the vertices and edges;
+        //remove all the vertices and edges of this graph;
         virtual bool clean();
 
         //check the connectiong between vertex that are not head
@@ -61,7 +62,7 @@ class DirectedGraph : public Graph
         //to check if a vertex is head tail or lonely/orphan
         virtual void VertexCheck();
 
-        //----------OVERLOADING-----------------------------------------------------
+        //----------OVERLOADING--------------------------------------------------------------------------
 
         // G1 == G2, returns true if G1 and G2 have the exact same vertices and edges
         bool operator==(const DirectedGraph&) const;
@@ -79,7 +80,7 @@ class DirectedGraph : public Graph
         DirectedGraph& operator+(DirectedGraph&);
 
         //<< G outputs the graph G.
-       friend ostream& operator<<(ostream&,DirectedGraph&);
+        friend ostream& operator<<(ostream&,DirectedGraph&);
 
 
 

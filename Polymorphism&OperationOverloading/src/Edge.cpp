@@ -5,16 +5,16 @@ Programmer:Jean Carlos Ng
 
 Edge::Edge()
 {
-    start = 0;
-    dest = 0;
-    weight = 0;
+    start = 0; // initialize value
+    dest = 0;// initialize value
+    weight = 0;// initialize value
 }
 
 Edge::Edge(int istart,int idest,int iweight)
 {
-    start = istart;
-    dest = idest;
-    weight = iweight;
+    start = istart; // store given value
+    dest = idest;// store given value
+    weight = iweight;// store given value
 }
 
 
@@ -25,13 +25,13 @@ Edge::~Edge()
 
 Edge::Edge(const Edge& other)
 {
-    weight = other.weight;
-    start = other.start;
-    dest = other.dest;
+    weight = other.weight; //pass value of the given edge to this object
+    start = other.start;//pass value of the given edge to this object
+    dest = other.dest;//pass value of the given edge to this object
 }
 
 void Edge::print()
 {
-    cout<<"This edge is connecting form Vertex "<<start<<" to "<<dest<<endl;
-    cout<<"The weight of this edge is "<<weight<<endl;
+    cout<<"This edge is connecting form Vertex "<<start<<" to "<<dest<<endl;//display text
+    cout<<"The weight of this edge is "<<weight<<endl;//display text
 }
