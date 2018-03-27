@@ -20,7 +20,7 @@ int main()
 	
 	cout<<"the ammount of connecting from this vertex is "<<vertex1.getIconnect()<<endl;//display info
 	cout<<"the ammount of connection from other vertex to this vertex is "<<vertex1.getIconnect()<<endl;//display info
-	cout<<"Therefore this is lone vertex"<<endl;v
+	cout<<"Therefore this is lone vertex"<<endl;//display info
 	
 	
 	
