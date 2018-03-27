@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include "Vertex.h"
 #include "Edge.h"
 #include "DirectedGraph.h"
@@ -6,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    DirectedGraph *DGptr,*DGptr2;
+    DirectedGraph *DGptr;
     Vertex *Vptr;
     Edge *Eptr;
 
@@ -30,7 +31,7 @@ int main()
 //---------------------------------------------------------------------------------
     cout<<endl;
 //-------------------ADD EDGE TO GRAPH---------------------------------------------
-    Eptr = new Edge(10,16,5);// add a edge from vertex 10 to 16 with a weight of 5
+    Eptr = new Edge(10,17,5);// add a edge from vertex 10 to 16 with a weight of 5
     if(DGptr->addEdge(*Eptr))
     {
         cout<<"Edge add successfully"<<endl;
@@ -113,10 +114,11 @@ int main()
 //---------------------------------------------------------------------------------
     cout<<endl;
 //--------------------------TEST DISPLAY GIVEN EDGE-------------------------------
-    DGptr->display(*Eptr);// show the path of edge which would be 1 -> 5 which was previously eliminated while testing remove edge
+    Eptr = new Edge(11,15,5);
+    DGptr->display(*Eptr);// show the path of edge which would be 11 -> 15 which was previously eliminated while testing remove edge
     DGptr->addEdge(*Eptr);//to avoid confusion
     Eptr = new Edge(13,16,5);
-    DGptr->display(*Eptr);// show the path of edge which would be 3 -> 6 which there isnt because vertex 6 was eliminated before while testing remove vertex
+    DGptr->display(*Eptr);// show the path of edge which would be 13 -> 16 which there isnt because vertex 6 was eliminated before while testing remove vertex
     DGptr->addVertex(*Vptr);//addign back the vertex to the graph
     DGptr->addEdge(*Eptr);// reconnecting the edge form 3->6
     DGptr->display(*Eptr);// now it will show 3->6
@@ -145,14 +147,44 @@ int main()
 //---------------------------------------------------------------------------------
     cout<<endl;
 
-
-
-
+    system("PAUSE");
+    delete DGptr;
+    system("CLS");
+    cout<<"START OVERLOADING FUNTION"<<endl<<endl;
 //-----------------------TEST OVERLOADING--------------------------------------------------------------------------------------------------
-    DGptr2 = new DirectedGraph();
-    DirectedGraph DG3;
-//-----------------------------TEST OVERLOADING OPERATOR '=='--------------------------------
-    if(DGptr == DGptr2) // GRAPH 2 doesnt have any vertex or edge // TEST '=='
+    DirectedGraph DG1, DG2, DG3;
+//-----------------------------TEST OVERLOADING OPERATOR '=='-----------------------------------------------------------------------
+    if(DG1 == DG2)
+    {
+        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+    }
+    Vptr = new Vertex(1,5);
+    DG1.addVertex(*Vptr);
+    Vptr = new Vertex(2,3);
+    DG1.addVertex(*Vptr);
+    Vptr = new Vertex(3,4);
+    DG1.addVertex(*Vptr);
+    Vptr = new Vertex(4,5);
+    DG1.addVertex(*Vptr);
+    Vptr = new Vertex(5,10);
+    DG1.addVertex(*Vptr);
+
+    Eptr = new Edge(1,2,10);
+    DG1.addEdge(*Eptr);
+    Eptr = new Edge(2,3,5);
+    DG1.addEdge(*Eptr);
+    Eptr = new Edge(1,4,10);
+    DG1.addEdge(*Eptr);
+    Eptr = new Edge(4,3,2);
+    DG1.addEdge(*Eptr);
+    Eptr = new Edge(3,5,6);
+    DG1.addEdge(*Eptr);
+
+    if(DG1 == DG2)
     {
         cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
     }
@@ -162,20 +194,9 @@ int main()
     }
 //-----------------------------------------------------------------------------------
     cout<<endl;
-//---------------------------TEST OVERLOADING OPERATOR '>'----------------------------
-    if(DGptr>DGptr2)// GRAPH 2 doesnt have any vertex or edge
-    {
-        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
-    }
-    else
-    {
-        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
-    }
-//---------------------------------------------------------------------------------
-    cout<<endl;
-//----------------------------TEST OVERLOADING OPERATOR '='------------------------
-    DGptr2 = DGptr; //  GRAPH#2 = GRAPH#1 // TEST '='
-    if(DGptr == DGptr2)
+//---------------------------TEST OVERLOADING OPERATOR '='-------------------------
+    DG2 = DG1;
+    if(DG1 == DG2)
     {
         cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
     }
@@ -183,8 +204,32 @@ int main()
     {
         cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
     }
+    Vptr = new Vertex(100,5);
+    DG2.addVertex(*Vptr);
+    DG2.display();
 
-    if(DGptr>DGptr2)
+    if(DG1 == DG2)
+    {
+        cout<<"GRAPH#1 is equal to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"GRAPH#1 is NOT equal to GRAPH#2"<<endl;
+    }
+//-----------------------------------------------------------------------------------
+    cout<<endl;
+//-----------------TEST OVERLOADING OPERATOR '>' and '++'-----------------------------
+    if(DG1>DG2)
+   {
+        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
+    }
+    else
+    {
+        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
+    }
+
+    DG1++;
+    if(DG1>DG2)
     {
         cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
     }
@@ -192,22 +237,16 @@ int main()
     {
         cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
     }
-//---------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
     cout<<endl;
-//-------------------TEST OVERLOADING OPERATOR '++' ------------------------------
-    DGptr=DGptr++;//add 1 to all its edge of DGptr
-    if(DGptr>DGptr2)
-    {
-        cout<<"GRAPH#1 is greater to GRAPH#2"<<endl;
-    }
-    else
-    {
-        cout<<"Either GRAPH#2 is greater or equal to GRAPH#1"<<endl;
-    }
-//---------------------------------------------------------------------------------
+//----------------------------TEST OVERLOADING '+' and '='-----------------------------------
+   DG3 = (DG1 + DG2);
+   DG1.display();
+   DG2.display();
+   DG3.display();
+//-----------------------------------------------------------------------------------
     cout<<endl;
-//----------------------------TEST OVERLOADING '+'-----------------------------------
-
-
-    return 0;
+//----------------------------TEST OVERLOADING '<<'-----------------------------------
+   cout<<DG1;
+   return 0;
 }

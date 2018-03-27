@@ -67,19 +67,19 @@ class DirectedGraph : public Graph
         bool operator==(const DirectedGraph&) const;
 
         //G1 = G2, assigns Graph G2 to Graph G1;
-        const DirectedGraph& operator=(const DirectedGraph& );
+        DirectedGraph operator=(DirectedGraph& );
 
         //G++ and ++G, increases the weights of all edges by one;
-        DirectedGraph operator++();
+        void operator++(int);
 
         //G1 > G2, returns boolean if the sum of weights of G1’s edges is greater than the sum of weights of G2’s edges;
         bool operator>(const DirectedGraph&)const;
 
         //G3 = G1 + G2, returns a graph that contains all the nodes of G1 and G2, all the edges of G1 and G2;
-        DirectedGraph operator+(DirectedGraph&);
+        DirectedGraph& operator+(DirectedGraph&);
 
         //<< G outputs the graph G.
-       friend ostream& operator<<( ostream&, const DirectedGraph& );
+       friend ostream& operator<<(ostream&,DirectedGraph&);
 
 
 

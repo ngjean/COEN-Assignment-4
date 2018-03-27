@@ -29,6 +29,7 @@ Vertex::Vertex(const Vertex& other)
     id = other.id;
     value = other.value;
     iconnect = other.iconnect;
+    iarrive = other.iarrive;
 }
 
 int Vertex::getIconnect()const

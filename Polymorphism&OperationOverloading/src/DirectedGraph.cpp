@@ -50,6 +50,13 @@ bool DirectedGraph::removeVertex(Vertex& v)
 bool DirectedGraph::addEdge(Edge& newLine)
 {
     int istart(-1), idest(-1);
+    for(unsigned int ivalue =0; ivalue < line.size(); ivalue++)
+    {
+        if(line[ivalue].start == newLine.start && line[ivalue].dest == newLine.dest)
+        {
+            return false;
+        }
+    }
     for(unsigned int inum =0; inum < node.size(); inum++)
     {
         if(node[inum].getId() == newLine.start)
@@ -176,7 +183,7 @@ void DirectedGraph::display(Edge& e)const
     {
         if(line[ivalue].start == e.start && line[ivalue].dest == e.dest)
         {
-             cout<<"|"<<e.start<<"|-->|"<<e.dest<<"|"<<endl;
+             cout<<"|"<<line[ivalue].start<<"|-->|"<<line[ivalue].dest<<"|"<<endl;
              return;
         }
     }
@@ -188,7 +195,7 @@ void DirectedGraph::display()// displaying graph as of connection betwen two ver
     VertexCheck();
     cout<<endl;
     cout<<"VERTEX WITH NO CONNECTION: "<<endl;
-    for(unsigned int inum = 0; inum <vilone.size(); inum++)
+    for(unsigned int inum = 0; inum < vilone.size(); inum++)
     {
         cout<<"|"<<vilone[inum].getId()<<"|"<<endl;
     }
@@ -269,7 +276,7 @@ void DirectedGraph::CheckConnect(int inum, string store)
                         string store2;
                         istore2 = line[ichain].dest;
                         store2 = store;
-                        store2 = store+"-|"+to_string(istore2)+"|";
+                        store2 = store2+"-|"+to_string(istore2)+"|";
                         vslist.push_back(store2);
 
                         for(unsigned int inum = 0 ; inum < node.size(); inum++)
@@ -291,7 +298,7 @@ void DirectedGraph::CheckConnect(int inum, string store)
 
 void DirectedGraph::VertexCheck()
 {
-    vihead.clear();
+    vitail.clear();
     vihead.clear();
     vilone.clear();
     vslist.clear();
@@ -324,7 +331,7 @@ bool DirectedGraph::clean()
 
 
 //---------------------------OVERLOADING-----------------------------------------------------------------------------------
-bool DirectedGraph::operator ==(const DirectedGraph &other) const // I THINK IT WOKRS
+bool DirectedGraph::operator ==(const DirectedGraph &other) const // WORKS
 {
 
 	bool flag = true;
@@ -377,59 +384,55 @@ bool DirectedGraph::operator ==(const DirectedGraph &other) const // I THINK IT 
 	}
 	return flag;
 }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+DirectedGraph DirectedGraph::operator =(DirectedGraph& other) // WORKS???????
+{
+        node.clear();
+        line.clear();
+        for (unsigned int inum = 0; inum < other.node.size(); inum++)
+        {
+            addVertex(other.node[inum]);
+        }
 
-const DirectedGraph& DirectedGraph::operator =(const DirectedGraph& other){ // WORKS I THINK
-
-	if(&other != this)
-    {
-			node.clear();
-			line.clear();
-			for (unsigned int i = 0; i < other.node.size();i++)
-            {
-				node.push_back(other.node[i]);
-			}
-
-			for(unsigned int j = 0; j < other.line.size(); j++)
-			{
-
-                line.push_back(other.line[j]);
-			}
-	}
-	return *this;
+        for(unsigned int inum = 0; inum < other.line.size(); inum++)
+        {
+            addEdge(other.line[inum]);
+        }
+    return *this;
 }
-
-DirectedGraph DirectedGraph::operator++() //NOT SURE IF IT WOKR
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+void DirectedGraph::operator++(int) //NOT SURE IF IT WOKR????
 {
     for(unsigned int inum = 0; inum < line.size(); inum++)
     {
         line[inum].weight = line[inum].weight + 1;
     }
-    return *this;
 }
 
-DirectedGraph DirectedGraph::operator+(DirectedGraph& other)
+DirectedGraph& DirectedGraph::operator+(DirectedGraph& other) // doesnt work
 {
-    //create a list, add the left hand and righ hand lists to it then return it
-    DirectedGraph newGraph;
+        /*for(unsigned int inum = 0; inum < node.size(); inum++)
+        {
+            newGraph.addVertex(node[inum]);
+        }
+        for(unsigned int inum = 0; inum < line.size(); inum++)
+        {
+            newGraph.addEdge(line[inum]);
+        }*/
 
-    newGraph = *this;
-
-    if(&other != this)
-    {
         for(unsigned int inum = 0; inum < other.node.size(); inum++)
         {
-            newGraph.addVertex(other.node[inum]);
+            addVertex(other.node[inum]);
         }
         for(unsigned int inum = 0; inum < other.line.size(); inum++)
         {
-            newGraph.addEdge(other.line[inum]);
+            addEdge(other.line[inum]);
         }
-    }
 
-    return newGraph;
+    return *this;
 }
 
-bool  DirectedGraph::operator>(const DirectedGraph &other)const // G1 = current graph; G2 = given Graph NOT SURE IF IT WORKS
+bool DirectedGraph::operator>(const DirectedGraph &other)const // G1 = current graph; G2 = given Graph ; //WORKS
 {
     int inum1(0),inum2(0);
 
@@ -438,16 +441,17 @@ bool  DirectedGraph::operator>(const DirectedGraph &other)const // G1 = current 
         inum1 = inum1 + line[inum].weight;
     }
 
-    for(unsigned int inum = 0 ; inum < line.size(); inum++) // Given Graph
+    for(unsigned int inum = 0 ; inum < other.line.size(); inum++) // Given Graph
     {
-        inum1 = inum1 + other.line[inum].weight;
+        inum2 = inum2 + other.line[inum].weight;
     }
 
     return (inum1>inum2);
 }
 
-ostream& operator<<(ostream& output, DirectedGraph& DG ) // NOT WORKING YET
+ostream& operator<<(ostream& output,DirectedGraph& DG ) // NOT WORKING YET
 {
+    output << "Directed GRAPH: "<<endl;
     output << DG.toString();
     return output;  // enables cout << d1 << d2 << d3;
 }
