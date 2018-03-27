@@ -1,3 +1,9 @@
+/*
+Programmer:Jean Carlos Ng Lee
+ID: 40026914
+Programmer: Gabriel Giordano
+ID: 40065284
+*/
 #ifndef EDGE_H
 #define EDGE_H
 #include<iostream>

@@ -1,3 +1,9 @@
+/*
+Programmer:Jean Carlos Ng Lee
+ID: 40026914
+Programmer: Gabriel Giordano
+ID: 40065284
+*/
 #include <iostream>
 #include <windows.h>
 #include "Vertex.h"

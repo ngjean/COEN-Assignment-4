@@ -1,3 +1,10 @@
+/*
+Programmer:Jean Carlos Ng Lee
+ID: 40026914
+Programmer: Gabriel Giordano
+ID: 40065284
+*/
+
 #ifndef VERTEX_H
 #define VERTEX_H
 #include<iostream>

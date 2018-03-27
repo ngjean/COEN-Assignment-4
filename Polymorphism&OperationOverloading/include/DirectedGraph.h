@@ -1,3 +1,9 @@
+/*
+Programmer:Jean Carlos Ng Lee
+ID: 40026914
+Programmer: Gabriel Giordano
+ID: 40065284
+*/
 #ifndef DIRECTEDGRAPH_H
 #define DIRECTEDGRAPH_H
 #include"Graph.h"
